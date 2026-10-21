@@ -1,0 +1,138 @@
+/* =====================================================
+   THEME.CSS: bag-ong kolor + mas dako/readable nga font
+   (Kung dili ganahan, kuhaa lang ang <link> niini sa index.html)
+   ===================================================== */
+
+/* ---------- KOLOR: Indigo + Violet + Pink ---------- */
+:root {
+    --blue: #4B3BC4;
+    --sky-blue: #7DB7FF;
+    --ice-blue: #E6E0FF;
+    --lavender: #F3D9FF;
+    --violet: #8B5CF6;
+    --white: #F8F6FF;
+    --dark: #1E1B4B;
+    --muted: #4A4E73;
+    --glass: rgba(255, 255, 255, 0.88);
+    --gradient: linear-gradient(125deg, #2E2A8F 0%, #5B3FD6 35%, #9B4FE0 65%, #E0559B 100%);
+}
+
+html { font-size: 17px; }   /* gamay nga dugang sa tibuok text */
+
+header { background: rgba(248, 246, 255, 0.85); border-bottom-color: rgba(139, 92, 246, 0.2); }
+.nav-links { background-color: transparent; }
+.nav-link::after { background: linear-gradient(90deg, #5B3FD6, #E0559B); }
+
+.profile-card {
+    background: linear-gradient(145deg, rgba(255,255,255,.92), rgba(224,214,255,.6), rgba(255,214,234,.55));
+    box-shadow: 0 25px 70px rgba(139, 92, 246, 0.2);
+}
+.photo-slider { background: linear-gradient(135deg, #E6E0FF, #FFD6EA); box-shadow: 0 8px 28px rgba(139, 92, 246, 0.25); }
+.orbit { border-color: rgba(139, 92, 246, 0.35); }
+.star-three { color: #FF7DB5; }
+.floating-bubble { box-shadow: 0 8px 25px rgba(139, 92, 246, 0.18); cursor: pointer; user-select: none; }
+
+.btn:hover { box-shadow: 0 12px 25px rgba(139, 92, 246, 0.3); }
+.btn-outline { border-color: #C9B8F5; background: rgba(255,255,255,.7); }
+
+.about-symbol { background: linear-gradient(135deg, #E9E2FF, #FFE0F0); }
+.card-icon { background: linear-gradient(135deg, #E9E2FF, #FFE0F0); }
+.info-card { border-color: rgba(196, 181, 245, 0.6); box-shadow: 0 12px 35px rgba(139, 92, 246, 0.08); }
+.info-card:hover { box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2); }
+.glass-card { box-shadow: 0 15px 45px rgba(139, 92, 246, 0.1); }
+.duo-section > .section { border-color: rgba(167, 139, 250, 0.55); box-shadow: 0 15px 45px rgba(139, 92, 246, 0.1); }
+.motto-mini { box-shadow: 0 14px 35px rgba(139, 92, 246, 0.25); }
+.mm-text span { color: #FFE3F1; }
+
+.contact-form input,
+.contact-form textarea { border-color: #E0D8F5; }
+.contact-form input:focus,
+.contact-form textarea:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.18); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline-color: #8B5CF6; }
+footer { border-top-color: rgba(139, 92, 246, 0.25); }
+
+/* ---------- FONT SIZE: mas dali basahon ---------- */
+.small-label        { font-size: 0.82rem; }
+.nav-link           { font-size: 0.97rem; }
+.hero-content > p   { font-size: 1.06rem; }
+.social-text        { font-size: 0.9rem; }
+.btn                { font-size: 0.97rem; }
+.floating-bubble    { font-size: 0.88rem; }
+.scroll-down        { font-size: 0.76rem; }
+.profile-card h3    { font-size: 1.3rem; }
+.profile-card p     { font-size: 0.98rem; }
+.ps-caption         { font-size: 0.9rem; }
+.section-heading p  { font-size: 1.02rem; }
+.about-card p       { font-size: 1.02rem; }
+.info-card h3       { font-size: 1.15rem; }
+.info-card p        { font-size: 0.97rem; }
+.contact-form label { font-size: 0.97rem; }
+.contact-form input,
+.contact-form textarea { font-size: 1rem; }
+.form-note          { font-size: 0.9rem; }
+footer              { font-size: 0.92rem; }
+.mm-label           { font-size: 0.76rem; }
+.mm-text            { font-size: clamp(1.1rem, 2.4vw, 1.4rem); }
+
+@media (max-width: 600px) {
+    .hero-content > p { font-size: 1rem; }
+    .small-label      { font-size: 0.78rem; }
+}
+
+/* ---------- INTERACTIVE: spotlight, tilt, back-to-top ---------- */
+.info-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(139, 92, 246, 0.2), transparent 60%);
+}
+.info-card:hover::after { opacity: 1; }
+
+.photo-slider { transition: transform 0.2s ease-out; will-change: transform; }
+
+.back-to-top-btn {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    background: var(--gradient);
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    z-index: 200;
+}
+.back-to-top-btn.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top-btn:hover { transform: translateY(-4px); }
+
+/* =====================================================
+   BACKGROUND COLOR NGA GRADIENT (hinay nga mo-shift)
+   Usba ang --page-bg kung gusto nimo ug lahi nga kolor.
+   ===================================================== */
+:root {
+    /* 1) Lilac + Pink + Sky (gigamit karon) */
+    --page-bg: linear-gradient(135deg, #D9D2FF 0%, #F0DDFF 30%, #FFD9EC 60%, #D6E8FF 100%);
+
+    /* 2) Sky Blue + Mint:   linear-gradient(135deg, #CFE3FF 0%, #D9F3FF 35%, #E3F8EE 70%, #E4DCFF 100%) */
+    /* 3) Peach + Rose:      linear-gradient(135deg, #FFE1D6 0%, #FFD6E8 35%, #F0D9FF 70%, #DCE4FF 100%) */
+}
+
+body {
+    background: var(--page-bg);
+    background-size: 220% 220%;
+    animation: gradientShift 22s ease infinite;
+}
+
+header { background: rgba(240, 232, 255, 0.78); }
+
+footer { background: rgba(255, 255, 255, 0.45); }
